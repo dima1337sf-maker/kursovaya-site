@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyPro - Курсовые работы от 800₽ | Дешевле рынка на 30%</title>
+    <meta name="description" content="Заказать курсовую работу от 800₽. Качественно, быстро, с гарантией. 15000+ выполненных работ, 98% довольных клиентов.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="logo">
+                    <span class="logo-text">StudyPro</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#services">Услуги</a></li>
+                    <li><a href="#calculator">Калькулятор</a></li>
+                    <li><a href="#reviews">Отзывы</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+                <button class="btn btn--primary" onclick="openModal('orderModal')">Заказать</button>
+                <button class="mobile-menu-toggle" aria-label="Открыть меню">☰</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Курсовые работы от 800₽ — дешевле рынка на 30%</h1>
+                <p class="hero-subtitle">Качественно, быстро, с гарантией возврата денег</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">15000+</span>
+                        <span class="stat-label">выполненных работ</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">98%</span>
+                        <span class="stat-label">довольных клиентов</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">экспертов</span>
+                    </div>
+                </div>
+                <div class="hero-actions">
+                    <button class="btn btn--primary btn--lg" onclick="openModal('orderModal')">Заказать со скидкой</button>
+                    <button class="btn btn--outline btn--lg" onclick="scrollTo('#calculator')">Рассчитать стоимость</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advantages Section -->
+    <section class="advantages" id="services">
+        <div class="container">
+            <h2 class="section-title">Почему выбирают StudyPro?</h2>
+            <div class="advantages-grid">
+                <div class="advantage-card">
+                    <div class="advantage-icon">💰</div>
+                    <h3>Цены ниже рынка на 30%</h3>
+                    <p>От 800₽ за курсовую против 1200₽ у конкурентов</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-icon">⚡</div>
+                    <h3>Срочно от 6 часов</h3>
+                    <p>Выполним даже самый горящий заказ</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-icon">🛡️</div>
+                    <h3>Гарантия 60 дней</h3>
+                    <p>Бесплатные правки до полного результата</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-icon">🎯</div>
+                    <h3>100% уникальность</h3>
+                    <p>Проверяем в Антиплагиат.ВУЗ</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section class="calculator-section" id="calculator">
+        <div class="container">
+            <h2 class="section-title">Калькулятор стоимости</h2>
+            <div class="calculator">
+                <div class="calculator-form">
+                    <div class="form-group">
+                        <label class="form-label">Тип работы</label>
+                        <select class="form-control" id="workType" onchange="calculatePrice()">
+                            <option value="800">Курсовая работа (от 800₽)</option>
+                            <option value="400">Реферат (от 400₽)</option>
+                            <option value="4500">Дипломная работа (от 4500₽)</option>
+                            <option value="300">Контрольная работа (от 300₽)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Предмет</label>
+                        <select class="form-control" id="subject">
+                            <option>Экономика</option>
+                            <option>Менеджмент</option>
+                            <option>Маркетинг</option>
+                            <option>Психология</option>
+                            <option>Юриспруденция</option>
+                            <option>История</option>
+                            <option>Философия</option>
+                            <option>Социология</option>
+                            <option>Педагогика</option>
+                            <option>Математика</option>
+                            <option>Информатика</option>
+                            <option>Физика</option>
+                            <option>Химия</option>
+                            <option>Биология</option>
+                            <option>Медицина</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Количество страниц: <span id="pagesValue">20</span></label>
+                        <input type="range" class="slider" id="pages" min="10" max="100" value="20" oninput="updatePages(); calculatePrice()">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Срок выполнения</label>
+                        <select class="form-control" id="deadline" onchange="calculatePrice()">
+                            <option value="2.5">6 часов (+150%)</option>
+                            <option value="2.0">1 день (+100%)</option>
+                            <option value="1.7">3 дня (+70%)</option>
+                            <option value="1.4">7 дней (+40%)</option>
+                            <option value="1.2">14 дней (+20%)</option>
+                            <option value="1.0" selected>30 дней</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="calculator-result">
+                    <div class="price-display">
+                        <div class="price-label">Стоимость:</div>
+                        <div class="price-value" id="finalPrice">800 ₽</div>
+                    </div>
+                    <button class="btn btn--primary btn--full-width" onclick="openModal('orderModal')">Заказать за эту цену</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">Как это работает</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Оставьте заявку</h3>
+                    <p>Заполните форму с требованиями к работе</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Выберите автора</h3>
+                    <p>Из 500+ проверенных экспертов</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Получите работу</h3>
+                    <p>В срок с гарантией качества</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews -->
+    <section class="reviews" id="reviews">
+        <div class="container">
+            <h2 class="section-title">Отзывы наших клиентов</h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"Заказывала курсовую по маркетингу. Сделали за 2 дня, преподаватель поставил отлично! Цена приятно удивила."</p>
+                    <div class="review-author">
+                        <strong>Анна К.</strong>
+                        <span>4 курс МГУ</span>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"Цены реально ниже, чем в других местах. Качество отличное, все требования учли. Рекомендую!"</p>
+                    <div class="review-author">
+                        <strong>Дмитрий С.</strong>
+                        <span>заочник</span>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"Быстро ответили, быстро сделали. Поддержка работает круглосуточно. Очень довольна результатом!"</p>
+                    <div class="review-author">
+                        <strong>Мария Л.</strong>
+                        <span>магистратура</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <h2 class="section-title">Часто задаваемые вопросы</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Как гарантируется уникальность?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Каждая работа проверяется в системе Антиплагиат.ВУЗ. Гарантируем уникальность не менее 70% для большинства дисциплин.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Можно ли вносить правки?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Да, бесплатные правки предоставляются в течение 60 дней после получения работы по замечаниям преподавателя.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Какие способы оплаты?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Принимаем оплату картами Visa/MasterCard, через Сбербанк Онлайн, Яндекс.Деньги, QIWI и другие удобные способы.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Конфиденциальность данных?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Гарантируем полную конфиденциальность. Ваши данные защищены и не передаются третьим лицам.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Что если работа не понравится?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Предоставляем гарантию возврата денег в течение 14 дней, если работа не соответствует заявленным требованиям.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>StudyPro</h3>
+                    <p>Лучший сервис для студентов с выгодными ценами и гарантией качества.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Контакты</h4>
+                    <p>📞 +7 (999) 123-45-67</p>
+                    <p>📧 info@studypro.ru</p>
+                    <p>💬 Телеграм: @studypro_help</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Услуги</h4>
+                    <p>Курсовые работы</p>
+                    <p>Дипломные работы</p>
+                    <p>Рефераты</p>
+                    <p>Контрольные работы</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 StudyPro. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Order Modal -->
+    <div class="modal hidden" id="orderModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Заказать работу</h3>
+                <button class="modal-close" onclick="closeModal('orderModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form class="order-form" onsubmit="submitOrder(event)">
+                    <div class="form-group">
+                        <label class="form-label">Тип работы *</label>
+                        <select class="form-control" required>
+                            <option>Курсовая работа</option>
+                            <option>Реферат</option>
+                            <option>Дипломная работа</option>
+                            <option>Контрольная работа</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Тема работы *</label>
+                        <input type="text" class="form-control" placeholder="Введите тему работы" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Предмет *</label>
+                        <select class="form-control" required>
+                            <option>Экономика</option>
+                            <option>Менеджмент</option>
+                            <option>Маркетинг</option>
+                            <option>Психология</option>
+                            <option>Юриспруденция</option>
+                            <option>История</option>
+                            <option>Философия</option>
+                            <option>Социология</option>
+                            <option>Педагогика</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Количество страниц *</label>
+                        <input type="number" class="form-control" min="10" max="200" value="20" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Срок выполнения *</label>
+                        <select class="form-control" required>
+                            <option>6 часов</option>
+                            <option>1 день</option>
+                            <option>3 дня</option>
+                            <option>7 дней</option>
+                            <option>14 дней</option>
+                            <option>30 дней</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email *</label>
+                        <input type="email" class="form-control" placeholder="your@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Телефон *</label>
+                        <input type="tel" class="form-control" placeholder="+7 (999) 123-45-67" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Дополнительные требования</label>
+                        <textarea class="form-control" rows="3" placeholder="Опишите особые требования к работе"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--full-width">Отправить заявку</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
